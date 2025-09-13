@@ -1,0 +1,43 @@
+// proto file, and its used to define your gRPC service interface and data structures in a language-agnostic way.
+// tells the protocol buffers compiler "protoc" which version of the syntax is being used
+// prot3 is the latest and most used version
+syntax = "proto3";
+option go_package = "github.com/Wanjie-Ryan/Grpc/grpc/orders";
+// the package declaration above tells the protoc compiler, when you generate go code from this .proto file, place it in a Go package with the name.
+
+// defines a gRPC service called OrderService that has one method
+service OrderService{
+    // rpc means Remote procedure Call - this is the function the client will call
+    // it takes in a CreateOrderRequest and returns a CreateOrderResponse
+    rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse){}
+}
+
+// below are message types, they are like structs in Go. They define the shape of data going in and out.
+// data type, name, numbers
+// the numbers 1,2,3 are used by protocol buffers for efficient encoding
+message Order{
+    int32 OrderID =1;
+    int32 CustomerID =2;
+    int32 ProductID =3;
+    int32 Quantity =4;
+
+}
+message CreateOrderRequest{
+    int32 customerID =1;
+    int32 productID =2;
+    int32 quantity =3;
+
+}
+
+message CreateOrderResponse{
+    string status =1;
+}
+
+message GetOrdersRequest{
+    int32 customerID =1;
+
+}
+// returns a list of order objects using the repeated keyword(like a slice in GO)
+message GetOrderResponse{
+    repeated Order orders =1;
+}
