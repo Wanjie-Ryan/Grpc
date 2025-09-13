@@ -2,7 +2,7 @@
 // tells the protocol buffers compiler "protoc" which version of the syntax is being used
 // prot3 is the latest and most used version
 syntax = "proto3";
-option go_package = "github.com/Wanjie-Ryan/Grpc/grpc/orders";
+option go_package = "github.com/Wanjie-Ryan/Grpc/service/common/genproto/orders";
 // the package declaration above tells the protoc compiler, when you generate go code from this .proto file, place it in a Go package with the name.
 
 // defines a gRPC service called OrderService that has one method

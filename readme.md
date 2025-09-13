@@ -21,4 +21,21 @@
 - Protocol buffers compiler (protoc) converts .proto files to code.
 
 # System Architecture
+
 ![alt text](image.png)
+
+# Generating code using protoc
+
+- protoc \
+  --proto_path=protobuf \
+  --go_out=service/common/genproto/orders --go_opt=paths=source_relative \
+  --go-grpc_out=service/common/genproto/orders --go-grpc_opt=paths=source_relative \
+  protobuf/orders.proto
+
+**proto_path**
+
+- tells protoc where to find your .proto files
+  **go_out**
+- where to put the generated Go structs
+  **go-grpc_out**
+- where to put the generated Go service interface (gRPC server/client stubs)
